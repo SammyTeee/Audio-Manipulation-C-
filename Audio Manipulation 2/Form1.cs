@@ -49,7 +49,7 @@ namespace Audio_Manipulation_2
 
             if (IsDisposed)
             {
-                Console.WriteLine("cheese");        //stops crash when play pressed when already playing 
+                Console.WriteLine("cheese");        //stops crash when play pressed when playing 
             }
             else if (outputDevice == null)
             {
@@ -169,7 +169,6 @@ namespace Audio_Manipulation_2
 
         private void butPauseStop_MouseClick(object sender, MouseEventArgs e)
         {
-
             if (numClicktime == 0)
             {
 
