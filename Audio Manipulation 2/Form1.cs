@@ -14,8 +14,8 @@ using NAudio.FileFormats;
 using WaveFormRendererLib;
 using System.Drawing.Imaging;
 using System.Drawing;
-
-
+using Melanchall.DryWetMidi.Devices;
+using Melanchall.DryWetMidi.Core;
 
 namespace Audio_Manipulation_2
 {
@@ -57,7 +57,7 @@ namespace Audio_Manipulation_2
                 outputDevice.PlaybackStopped += OnPlaybackStopped;      // to add ASIO - github.com/naudio/NAudio/blob/master/Docs/AsioPlayback.md
             }
             if (audioFile == null)
-            {                                                               
+            {
                 audioFile = new AudioFileReader(textBox1.Text);                             //audioFile = new AudioFileReader(@"c:\aphextwin.mp3");     //hardcoded directory
                 outputDevice.Init(audioFile);
             }
@@ -148,7 +148,7 @@ namespace Audio_Manipulation_2
         }
 
         private void butPause_Click(object sender, EventArgs e)
-        { 
+        {
             outputDevice.Pause();                  //working playback stop button - doesnt crash when playback null 
         }
 
@@ -159,7 +159,7 @@ namespace Audio_Manipulation_2
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            
+
             long playbackDuration = outputDevice.GetPosition();
             string durationString;
             durationString = playbackDuration.ToString();
@@ -180,7 +180,7 @@ namespace Audio_Manipulation_2
                 doubleClickTimer.Start();
 
             }
-            else 
+            else
             {
 
                 numClicktime = 0;
@@ -195,16 +195,16 @@ namespace Audio_Manipulation_2
 
         void doubleClickTimer_Tick(object sender, EventArgs e)
         {
-           
-            if (DateTime.Now.TimeOfDay.TotalMilliseconds-numClicktime > 300)
+
+            if (DateTime.Now.TimeOfDay.TotalMilliseconds - numClicktime > 300)
             {
                 numClicktime = 0;
                 doubleClickTimer.Stop();
                 outputDevice.Pause();       //single click event
-                //MessageBox.Show("SINGLE");
-            
+                                            //MessageBox.Show("SINGLE");
+
             }
-                    
+
         }
 
         private void butPauseStop_Click(object sender, EventArgs e)
@@ -214,8 +214,13 @@ namespace Audio_Manipulation_2
 
         private void volumeSlider1_Load(object sender, EventArgs e)
         {
-            //volumeSlider1.Volume = outputDevice.Volume();
+            //volumeSlider1.Volume = outputDevice.Volume
+        }
 
+        private void midiOptions_Click(object sender, EventArgs e)
+        {
+            var form2 = new Form2();
+            form2.Show();
         }
     }
 }
