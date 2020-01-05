@@ -56,10 +56,7 @@ namespace Audio_Manipulation_2
                 audioFile = new AudioFileReader(textBox1.Text);                             //audioFile = new AudioFileReader(@"c:\aphextwin.mp3");     //hardcoded directory
                 outputDevice.Init(audioFile);
             }
-            else
-            {
-                branch.test();
-            }
+
             outputDevice.Play();
 
         }
