@@ -46,7 +46,12 @@ namespace Audio_Manipulation_2
         private void OnButtonPlayClick_Click(object sender, EventArgs e)
         {
 
-            if (outputDevice == null)
+
+            if (IsDisposed)
+            {
+                Console.WriteLine("cheese");        //stops crash when play pressed when already playing 
+            }
+            else if (outputDevice == null)
             {
                 outputDevice = new WaveOutEvent();                      //WaveOutEvent best option for sending audio to soundcard 
                 outputDevice.PlaybackStopped += OnPlaybackStopped;      // to add ASIO - github.com/naudio/NAudio/blob/master/Docs/AsioPlayback.md
