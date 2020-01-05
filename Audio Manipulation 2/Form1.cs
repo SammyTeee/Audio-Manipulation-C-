@@ -58,7 +58,7 @@ namespace Audio_Manipulation_2
             }
             else
             {
-            
+                branch.test();
             }
             outputDevice.Play();
 
