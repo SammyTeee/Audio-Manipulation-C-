@@ -50,7 +50,6 @@ namespace Audio_Manipulation_2
             Console.WriteLine(deviceString);
 
 
-
             using (var inputDevice = InputDevice.GetById(0))
             {
                 inputDevice.EventReceived += OnEventReceived;

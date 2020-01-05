@@ -156,7 +156,6 @@ namespace Audio_Manipulation_2
         {
             outputDevice.Stop();      //throws exception if pressed when already stopped
         }
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
