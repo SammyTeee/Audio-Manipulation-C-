@@ -47,7 +47,7 @@ namespace Audio_Manipulation_2
             int deviceCount = InputDevice.GetDevicesCount();
             string deviceString = deviceCount.ToString();
             textBox1.Text = deviceString;
-            Console.WriteLine(deviceString);
+            //Console.WriteLine(deviceString);     //seems to crash when highlight textbox 
 
 
             using (var inputDevice = InputDevice.GetById(0))
