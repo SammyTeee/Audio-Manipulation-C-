@@ -28,6 +28,22 @@ namespace Audio_Manipulation_2
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+        private void OnEventReceived(object sender, MidiEventReceivedEventArgs e)
+        {
+            var midiDevice = (MidiDevice)sender;
+            Console.WriteLine($"Event received from '{midiDevice.Name}' at {DateTime.Now}: {e.Event}");
+            MessageBox.Show($"Event received from '{midiDevice.Name}' at {DateTime.Now}: {e.Event}");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
             int deviceCount = InputDevice.GetDevicesCount();
             string deviceString = deviceCount.ToString();
             textBox1.Text = deviceString;
@@ -40,16 +56,6 @@ namespace Audio_Manipulation_2
                 inputDevice.EventReceived += OnEventReceived;
                 inputDevice.StartEventsListening();
             }
-        }
-        private void OnEventReceived(object sender, MidiEventReceivedEventArgs e)
-        {
-            var midiDevice = (MidiDevice)sender;
-            Console.WriteLine($"Event received from '{midiDevice.Name}' at {DateTime.Now}: {e.Event}");
-            System.Windows.Forms.MessageBox.Show($"Event received from '{midiDevice.Name}' at {DateTime.Now}: {e.Event}");
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
         }
     }
