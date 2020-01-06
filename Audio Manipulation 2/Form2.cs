@@ -26,9 +26,6 @@ namespace Audio_Manipulation_2
             InitializeComponent();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
         private void OnEventReceived(object sender, MidiEventReceivedEventArgs e)
         {
             var midiDevice = (MidiDevice)sender;
@@ -36,17 +33,14 @@ namespace Audio_Manipulation_2
             MessageBox.Show($"Event received from '{midiDevice.Name}' at {DateTime.Now}: {e.Event}");
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void Form2_Load(object sender, EventArgs e)
         {
 
             int deviceCount = InputDevice.GetDevicesCount();
-            string deviceString = deviceCount.ToString();
-            textBox1.Text = deviceString;
+            string deviceCountString = deviceCount.ToString();
+            textBox1.Text = deviceCountString;
             //Console.WriteLine(deviceString);     //seems to crash when highlight textbox 
 
 
@@ -54,7 +48,25 @@ namespace Audio_Manipulation_2
             {
                 inputDevice.EventReceived += OnEventReceived;
                 inputDevice.StartEventsListening();
+                textBox2.Text = inputDevice.Name;
+                int midiIDINT = inputDevice.Id;
+                string midiIDString = midiIDINT.ToString();
+                midiID.Text = midiIDString;
             }
+
+        }
+
+        public void midiDeviceName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void midiID_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

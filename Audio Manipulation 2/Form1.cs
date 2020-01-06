@@ -154,7 +154,7 @@ namespace Audio_Manipulation_2
 
         private void butStop_click(object sender, EventArgs e)
         {
-            outputDevice.Stop();      //throws exception if pressed when already stopped
+            outputDevice.Stop();      
         }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -213,7 +213,7 @@ namespace Audio_Manipulation_2
 
         private void volumeSlider1_Load(object sender, EventArgs e)
         {
-            //volumeSlider1.Volume = outputDevice.Volume
+        
         }
 
         private void midiOptions_Click(object sender, EventArgs e)
