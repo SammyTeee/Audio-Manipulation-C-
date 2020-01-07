@@ -41,8 +41,6 @@ namespace Audio_Manipulation_2
         //   pictureBox2.Width = image.Width;
         // }
 
-
-
         private void OnButtonPlayClick_Click(object sender, EventArgs e)
         {
             if (outputDevice == null)
@@ -110,7 +108,6 @@ namespace Audio_Manipulation_2
             }
         }
 
-
         public static void AddToLog(string txtToAdd)
         {
 
@@ -158,9 +155,7 @@ namespace Audio_Manipulation_2
 
             //double playbackDuration = WaveOutEvent.Equals;
             //textBox2.Text = playbackDuration;
-
             //durationString = playbackDuration;
-            
             //playbackDurationString = 
             //double playbackString;
 
@@ -193,11 +188,7 @@ namespace Audio_Manipulation_2
             {
                 numClicktime = 0;
                 doubleClickTimer.Stop();
-                    //if outputDevice.
-                    //{
                 outputDevice.Pause();
-                    //}
-
             }
 
         }
