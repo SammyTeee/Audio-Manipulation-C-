@@ -45,23 +45,20 @@ namespace Audio_Manipulation_2
 
         private void OnButtonPlayClick_Click(object sender, EventArgs e)
         {
-
-
-            if (IsDisposed)
-            {
-                Console.WriteLine("cheese");        //stops crash when play pressed when playing 
-            }
-            else if (outputDevice == null)
+            if (outputDevice == null)
             {
                 outputDevice = new WaveOutEvent();                      //WaveOutEvent best option for sending audio to soundcard 
                 outputDevice.PlaybackStopped += OnPlaybackStopped;      // to add ASIO - github.com/naudio/NAudio/blob/master/Docs/AsioPlayback.md
             }
             if (audioFile == null)
-            {
+            {                                                               
                 audioFile = new AudioFileReader(textBox1.Text);                             //audioFile = new AudioFileReader(@"c:\aphextwin.mp3");     //hardcoded directory
                 outputDevice.Init(audioFile);
             }
+            else
+            {
 
+            }
             outputDevice.Play();
 
         }
@@ -159,10 +156,13 @@ namespace Audio_Manipulation_2
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
-            long playbackDuration = outputDevice.GetPosition();
-            string durationString;
-            durationString = playbackDuration.ToString();
-            textBox2.Text = durationString;
+            //double playbackDuration = WaveOutEvent.Equals;
+            //textBox2.Text = playbackDuration;
+
+            //durationString = playbackDuration;
+            
+            //playbackDurationString = 
+            //double playbackString;
 
         }
 
@@ -179,19 +179,13 @@ namespace Audio_Manipulation_2
                 doubleClickTimer.Start();
 
             }
-            else
-            {
 
-                numClicktime = 0;
-                doubleClickTimer.Stop();
-                outputDevice.Stop();     //double click event
-                //MessageBox.Show("DOUBLE");
+            if (outputDevice == null)
+            {
 
             }
 
-
         }
-
         void doubleClickTimer_Tick(object sender, EventArgs e)
         {
 
@@ -199,8 +193,10 @@ namespace Audio_Manipulation_2
             {
                 numClicktime = 0;
                 doubleClickTimer.Stop();
-                outputDevice.Pause();       //single click event
-                                            //MessageBox.Show("SINGLE");
+                    //if outputDevice.
+                    //{
+                outputDevice.Pause();
+                    //}
 
             }
 
