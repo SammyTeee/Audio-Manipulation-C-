@@ -175,6 +175,10 @@ namespace Audio_Manipulation_2
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            //double positionDouble = outputDevice.GetPosition
+            //textBox2.Text = positionDouble.ToString;
+
+            
 
             //double playbackDuration = WaveOutEvent.Equals;
             //textBox2.Text = playbackDuration;
@@ -225,6 +229,11 @@ namespace Audio_Manipulation_2
         {
             var form2 = new Form2();
             form2.Show();
+        }
+
+        private void openLogFolderButt_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"explorer.exe" , @"C:\");
         }
     }
 }
