@@ -42,6 +42,7 @@ namespace Audio_Manipulation_2
             this.butPauseStop = new System.Windows.Forms.Button();
             this.volumeSlider1 = new NAudio.Gui.VolumeSlider();
             this.midiOptions = new System.Windows.Forms.Button();
+            this.openLogFolderButt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,11 +149,22 @@ namespace Audio_Manipulation_2
             this.midiOptions.UseVisualStyleBackColor = true;
             this.midiOptions.Click += new System.EventHandler(this.midiOptions_Click);
             // 
+            // openLogFolderButt
+            // 
+            this.openLogFolderButt.Location = new System.Drawing.Point(658, 13);
+            this.openLogFolderButt.Name = "openLogFolderButt";
+            this.openLogFolderButt.Size = new System.Drawing.Size(69, 44);
+            this.openLogFolderButt.TabIndex = 12;
+            this.openLogFolderButt.Text = "Open Log Folder";
+            this.openLogFolderButt.UseVisualStyleBackColor = true;
+            this.openLogFolderButt.Click += new System.EventHandler(this.openLogFolderButt_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(961, 278);
+            this.Controls.Add(this.openLogFolderButt);
             this.Controls.Add(this.midiOptions);
             this.Controls.Add(this.volumeSlider1);
             this.Controls.Add(this.butPauseStop);
@@ -186,6 +198,7 @@ namespace Audio_Manipulation_2
         private System.Windows.Forms.Button butPauseStop;
         private NAudio.Gui.VolumeSlider volumeSlider1;
         private System.Windows.Forms.Button midiOptions;
+        private System.Windows.Forms.Button openLogFolderButt;
     }
 }
 
