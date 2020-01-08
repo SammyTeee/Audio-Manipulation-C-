@@ -16,6 +16,7 @@ using System.Drawing.Imaging;
 using System.Drawing;
 using Melanchall.DryWetMidi.Devices;
 using Melanchall.DryWetMidi.Core;
+using System.Threading;
 
 namespace Audio_Manipulation_2
 {
@@ -24,25 +25,18 @@ namespace Audio_Manipulation_2
 
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
-
+        
         double numClicktime = 0;
-        private Timer doubleClickTimer = new Timer();
+        private System.Windows.Forms.Timer doubleClickTimer = new System.Windows.Forms.Timer();
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        //private void Form1_Load(object sender, EventArgs e)
-        // {
-        //   Image image = Image.FromFile("c:/output.png");
-        //   pictureBox2.Image = image;
-        //   pictureBox2.Height = image.Height;
-        //   pictureBox2.Width = image.Width;
-        // }
-
         private void OnButtonPlayClick_Click(object sender, EventArgs e)
         {
+
             if (outputDevice == null)
             {
                 outputDevice = new WaveOutEvent();                      //WaveOutEvent best option for sending audio to soundcard 
@@ -57,9 +51,32 @@ namespace Audio_Manipulation_2
             {
 
             }
+
             outputDevice.Play();
 
+            new Thread(() =>
+            {
+
+                while (true)
+
+                {
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+
+
+                        textBox2.Text = DateTime.Now.TimeOfDay.Seconds.ToString();
+                        Thread.Sleep(10);
+                 
+                    }));
+                }
+
+
+            }   
+
+            ).Start();
+
         }
+
         public void OnPlaybackStopped(object sender, StoppedEventArgs args)  //stop playback event handler
         {
             outputDevice.Dispose();
@@ -74,16 +91,16 @@ namespace Audio_Manipulation_2
             System.Windows.Forms.OpenFileDialog oDlg = new System.Windows.Forms.OpenFileDialog();
             if (System.Windows.Forms.DialogResult.OK == oDlg.ShowDialog())
             {
-                oSelectedFile = oDlg.FileName;      // selected file = oSelectedFile
+                oSelectedFile = oDlg.FileName;      //selected file = oSelectedFile
                 textBox1.Text = oSelectedFile;
 
-                // Configure Providers
+                //configure Providers
                 MaxPeakProvider maxPeakProvider = new MaxPeakProvider();
-                RmsPeakProvider rmsPeakProvider = new RmsPeakProvider(200); // e.g. 200
-                SamplingPeakProvider samplingPeakProvider = new SamplingPeakProvider(200); // e.g. 200
-                AveragePeakProvider averagePeakProvider = new AveragePeakProvider(4); // e.g. 4
+                RmsPeakProvider rmsPeakProvider = new RmsPeakProvider(200);
+                SamplingPeakProvider samplingPeakProvider = new SamplingPeakProvider(200);      //could control these values with sliders?
+                AveragePeakProvider averagePeakProvider = new AveragePeakProvider(4);
 
-                // Configure the style of the audio wave image
+                //configure the style of the audio wave image
                 StandardWaveFormRendererSettings myRendererSettings = new StandardWaveFormRendererSettings();
                 myRendererSettings.Width = 1080;
                 myRendererSettings.TopHeight = 64;
@@ -141,6 +158,11 @@ namespace Audio_Manipulation_2
 
         }
 
+        private void butPauseStop_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void butPause_Click(object sender, EventArgs e)
         {
             outputDevice.Pause();                  //working playback stop button - doesnt crash when playback null 
@@ -148,8 +170,9 @@ namespace Audio_Manipulation_2
 
         private void butStop_click(object sender, EventArgs e)
         {
-            outputDevice.Stop();      
+            //outputDevice.Stop();      
         }
+
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
@@ -190,11 +213,6 @@ namespace Audio_Manipulation_2
                 doubleClickTimer.Stop();
                 outputDevice.Pause();
             }
-
-        }
-
-        private void butPauseStop_Click(object sender, EventArgs e)
-        {
 
         }
 

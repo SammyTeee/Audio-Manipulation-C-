@@ -78,6 +78,7 @@
             // 
             this.midiID.Location = new System.Drawing.Point(104, 20);
             this.midiID.Name = "midiID";
+            this.midiID.ReadOnly = true;
             this.midiID.Size = new System.Drawing.Size(20, 20);
             this.midiID.TabIndex = 4;
             this.midiID.TextChanged += new System.EventHandler(this.midiID_TextChanged);
