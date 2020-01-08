@@ -79,7 +79,7 @@ namespace Audio_Manipulation_2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(8, 72);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1197, 100);
+            this.pictureBox2.Size = new System.Drawing.Size(941, 100);
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
@@ -93,7 +93,7 @@ namespace Audio_Manipulation_2
             // 
             // butPause
             // 
-            this.butPause.Location = new System.Drawing.Point(986, 12);
+            this.butPause.Location = new System.Drawing.Point(698, 12);
             this.butPause.Name = "butPause";
             this.butPause.Size = new System.Drawing.Size(69, 45);
             this.butPause.TabIndex = 6;
@@ -103,7 +103,7 @@ namespace Audio_Manipulation_2
             // 
             // butStop
             // 
-            this.butStop.Location = new System.Drawing.Point(1061, 12);
+            this.butStop.Location = new System.Drawing.Point(773, 12);
             this.butStop.Name = "butStop";
             this.butStop.Size = new System.Drawing.Size(69, 45);
             this.butStop.TabIndex = 7;
@@ -113,7 +113,7 @@ namespace Audio_Manipulation_2
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(986, 255);
+            this.textBox2.Location = new System.Drawing.Point(698, 255);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(144, 20);
@@ -133,7 +133,7 @@ namespace Audio_Manipulation_2
             // 
             // volumeSlider1
             // 
-            this.volumeSlider1.Location = new System.Drawing.Point(986, 230);
+            this.volumeSlider1.Location = new System.Drawing.Point(698, 230);
             this.volumeSlider1.Name = "volumeSlider1";
             this.volumeSlider1.Size = new System.Drawing.Size(144, 19);
             this.volumeSlider1.TabIndex = 10;
@@ -141,7 +141,7 @@ namespace Audio_Manipulation_2
             // 
             // midiOptions
             // 
-            this.midiOptions.Location = new System.Drawing.Point(911, 12);
+            this.midiOptions.Location = new System.Drawing.Point(623, 12);
             this.midiOptions.Name = "midiOptions";
             this.midiOptions.Size = new System.Drawing.Size(69, 45);
             this.midiOptions.TabIndex = 11;
@@ -163,7 +163,7 @@ namespace Audio_Manipulation_2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(961, 278);
+            this.ClientSize = new System.Drawing.Size(855, 278);
             this.Controls.Add(this.midiOptions);
             this.Controls.Add(this.volumeSlider1);
             this.Controls.Add(this.butPauseStop);
