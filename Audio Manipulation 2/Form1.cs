@@ -23,9 +23,9 @@ namespace Audio_Manipulation_2
     public partial class Form1 : Form
     {
 
-        private WaveOutEvent outputDevice;
+        //private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
-        //private IWavePlayer outputDevice;
+        private IWavePlayer outputDevice;
 
         double numClicktime = 0;
         private System.Windows.Forms.Timer doubleClickTimer = new System.Windows.Forms.Timer();
@@ -232,11 +232,9 @@ namespace Audio_Manipulation_2
             System.Diagnostics.Process.Start(@"explorer.exe" , @"C:\ProgramData\AudioManipulation");
         }
 
-        private void volumeSlider1_VolumeChanged(object sender, EventArgs e)
+        private void volumeSlider1_VolumeChanged(object sender, EventArgs e) //Volume Slider
         {
-            //outputDevice.Volume;
-            Console.WriteLine("volume changed");
-            //WaveOutEvent.v
+            outputDevice.Volume = volumeSlider1.Volume;             
         }
     }
 }
