@@ -23,9 +23,9 @@ namespace Audio_Manipulation_2
     public partial class Form1 : Form
     {
 
-        //private WaveOutEvent outputDevice;
-        private AudioFileReader audioFile;
-        private IWavePlayer outputDevice;
+        public WaveOutEvent outputDevice;
+        public AudioFileReader audioFile;
+        public IWavePlayer waveOutputDevice;
 
         double numClicktime = 0;
         private System.Windows.Forms.Timer doubleClickTimer = new System.Windows.Forms.Timer();
@@ -54,6 +54,10 @@ namespace Audio_Manipulation_2
             }
 
             outputDevice.Play();
+            long GetPosition;
+            GetPosition = outputDevice.GetPosition();
+            string PositionString = GetPosition.ToString();
+            textBox2.Text = PositionString;
 
             //new Thread(() =>
             //{
@@ -65,9 +69,8 @@ namespace Audio_Manipulation_2
             //        {
 
 
-            //            textBox2.Text = DateTime.Now.TimeOfDay.Seconds.ToString();
-            //            Thread.Sleep(10);
-                 
+            //            Thread.Sleep(1000);
+
             //        }));
             //    }
 
@@ -171,7 +174,7 @@ namespace Audio_Manipulation_2
 
         private void butStop_click(object sender, EventArgs e)
         {
-            //outputDevice.Stop();      
+            outputDevice.Stop();      
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
