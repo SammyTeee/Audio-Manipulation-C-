@@ -43,6 +43,7 @@ namespace Audio_Manipulation_2
             this.volumeSlider1 = new NAudio.Gui.VolumeSlider();
             this.midiOptions = new System.Windows.Forms.Button();
             this.openLogFolderButt = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,7 +138,7 @@ namespace Audio_Manipulation_2
             this.volumeSlider1.Name = "volumeSlider1";
             this.volumeSlider1.Size = new System.Drawing.Size(144, 19);
             this.volumeSlider1.TabIndex = 10;
-            this.volumeSlider1.Load += new System.EventHandler(this.volumeSlider1_Load);
+            this.volumeSlider1.VolumeChanged += new System.EventHandler(this.volumeSlider1_VolumeChanged);
             // 
             // midiOptions
             // 
@@ -159,11 +160,22 @@ namespace Audio_Manipulation_2
             this.openLogFolderButt.UseVisualStyleBackColor = true;
             this.openLogFolderButt.Click += new System.EventHandler(this.openLogFolderButt_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(548, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(69, 45);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Open Log Folder";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.openLogFolderButt_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 278);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.midiOptions);
             this.Controls.Add(this.volumeSlider1);
             this.Controls.Add(this.butPauseStop);
@@ -198,6 +210,7 @@ namespace Audio_Manipulation_2
         private NAudio.Gui.VolumeSlider volumeSlider1;
         private System.Windows.Forms.Button midiOptions;
         private System.Windows.Forms.Button openLogFolderButt;
+        private System.Windows.Forms.Button button1;
     }
 }
 

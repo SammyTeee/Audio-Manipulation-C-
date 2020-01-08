@@ -25,7 +25,8 @@ namespace Audio_Manipulation_2
 
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
-        
+        //private IWavePlayer outputDevice;
+
         double numClicktime = 0;
         private System.Windows.Forms.Timer doubleClickTimer = new System.Windows.Forms.Timer();
 
@@ -54,26 +55,26 @@ namespace Audio_Manipulation_2
 
             outputDevice.Play();
 
-            new Thread(() =>
-            {
+            //new Thread(() =>
+            //{
 
-                while (true)
+            //    while (true)
 
-                {
-                    this.Invoke(new MethodInvoker(delegate ()
-                    {
+            //    {
+            //        this.Invoke(new MethodInvoker(delegate ()
+            //        {
 
 
-                        textBox2.Text = DateTime.Now.TimeOfDay.Seconds.ToString();
-                        Thread.Sleep(10);
+            //            textBox2.Text = DateTime.Now.TimeOfDay.Seconds.ToString();
+            //            Thread.Sleep(10);
                  
-                    }));
-                }
+            //        }));
+            //    }
 
 
-            }   
+            //}   
 
-            ).Start();
+            //).Start();
 
         }
 
@@ -220,11 +221,6 @@ namespace Audio_Manipulation_2
 
         }
 
-        private void volumeSlider1_Load(object sender, EventArgs e)
-        {
-        
-        }
-
         private void midiOptions_Click(object sender, EventArgs e)
         {
             var form2 = new Form2();
@@ -233,7 +229,14 @@ namespace Audio_Manipulation_2
 
         private void openLogFolderButt_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@"explorer.exe" , @"C:\");
+            System.Diagnostics.Process.Start(@"explorer.exe" , @"C:\ProgramData\AudioManipulation");
+        }
+
+        private void volumeSlider1_VolumeChanged(object sender, EventArgs e)
+        {
+            //outputDevice.Volume;
+            Console.WriteLine("volume changed");
+            //WaveOutEvent.v
         }
     }
 }
