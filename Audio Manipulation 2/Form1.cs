@@ -152,6 +152,10 @@ namespace Audio_Manipulation_2
         }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            //double positionDouble = outputDevice.GetPosition
+            //textBox2.Text = positionDouble.ToString;
+
+            
 
             //double playbackDuration = WaveOutEvent.Equals;
             //textBox2.Text = playbackDuration;
