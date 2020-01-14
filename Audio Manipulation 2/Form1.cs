@@ -23,19 +23,24 @@ namespace Audio_Manipulation_2
     public partial class Form1 : Form
     {
 
-        public WaveOutEvent outputDevice;
-        public AudioFileReader audioFile;
-        public IWavePlayer waveOutputDevice;
+        private string PositionString = "";
+        private WaveOutEvent outputDevice;
+        private AudioFileReader audioFile;
+        private IWavePlayer waveOutputDevice;
 
         double numClicktime = 0;
         private System.Windows.Forms.Timer doubleClickTimer = new System.Windows.Forms.Timer();
+
+      //  public string PositionString { get; private set; }
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void OnButtonPlayClick_Click(object sender, EventArgs e)
+
+        //string PositionString;
+        public void OnButtonPlayClick_Click(object sender, EventArgs e)
         {
 
             if (outputDevice == null)
@@ -44,7 +49,7 @@ namespace Audio_Manipulation_2
                 outputDevice.PlaybackStopped += OnPlaybackStopped;      // to add ASIO - github.com/naudio/NAudio/blob/master/Docs/AsioPlayback.md
             }
             if (audioFile == null)
-            {                                                               
+            {
                 audioFile = new AudioFileReader(textBox1.Text);                             //audioFile = new AudioFileReader(@"c:\aphextwin.mp3");     //hardcoded directory
                 outputDevice.Init(audioFile);
             }
@@ -56,29 +61,30 @@ namespace Audio_Manipulation_2
             outputDevice.Play();
             long GetPosition;
             GetPosition = outputDevice.GetPosition();
-            string PositionString = GetPosition.ToString();
+            PositionString = GetPosition.ToString();             //converts bytes to string
             textBox2.Text = PositionString;
+            
+            Task.Factory.StartNew(() => { printPositionString(); });
+            
+            
+        }
 
-            //new Thread(() =>
-            //{
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
 
-            //    while (true)
+        }
 
-            //    {
-            //        this.Invoke(new MethodInvoker(delegate ()
-            //        {
+        public void printPositionString()
+        {
 
-
-            //            Thread.Sleep(1000);
-
-            //        }));
-            //    }
-
-
-            //}   
-
-            //).Start();
-
+            SetText(PositionString);
+        }
+        private void SetText(string s)
+        {
+            textBox2.Invoke((MethodInvoker)delegate { textBox2.Text = s; });
+            {
+                Thread.Sleep(10);
+            }
         }
 
         public void OnPlaybackStopped(object sender, StoppedEventArgs args)  //stop playback event handler
@@ -177,21 +183,6 @@ namespace Audio_Manipulation_2
             outputDevice.Stop();      
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            //double positionDouble = outputDevice.GetPosition
-            //textBox2.Text = positionDouble.ToString;
-
-            
-
-            //double playbackDuration = WaveOutEvent.Equals;
-            //textBox2.Text = playbackDuration;
-            //durationString = playbackDuration;
-            //playbackDurationString = 
-            //double playbackString;
-
-        }
-
         private void butPauseStop_MouseClick(object sender, MouseEventArgs e)
         {
             if (numClicktime == 0)
@@ -238,6 +229,16 @@ namespace Audio_Manipulation_2
         private void volumeSlider1_VolumeChanged(object sender, EventArgs e) //Volume Slider
         {
             outputDevice.Volume = volumeSlider1.Volume;             
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        
         }
     }
 }

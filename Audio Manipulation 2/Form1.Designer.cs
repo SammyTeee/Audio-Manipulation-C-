@@ -59,7 +59,7 @@ namespace Audio_Manipulation_2
             // 
             // butBrowse
             // 
-            this.butBrowse.Location = new System.Drawing.Point(8, 221);
+            this.butBrowse.Location = new System.Drawing.Point(8, 189);
             this.butBrowse.Name = "butBrowse";
             this.butBrowse.Size = new System.Drawing.Size(75, 27);
             this.butBrowse.TabIndex = 2;
@@ -69,7 +69,7 @@ namespace Audio_Manipulation_2
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(8, 255);
+            this.textBox1.Location = new System.Drawing.Point(8, 223);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(359, 20);
@@ -114,7 +114,7 @@ namespace Audio_Manipulation_2
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(698, 255);
+            this.textBox2.Location = new System.Drawing.Point(698, 223);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(144, 20);
@@ -134,7 +134,7 @@ namespace Audio_Manipulation_2
             // 
             // volumeSlider1
             // 
-            this.volumeSlider1.Location = new System.Drawing.Point(698, 230);
+            this.volumeSlider1.Location = new System.Drawing.Point(698, 198);
             this.volumeSlider1.Name = "volumeSlider1";
             this.volumeSlider1.Size = new System.Drawing.Size(144, 19);
             this.volumeSlider1.TabIndex = 10;
@@ -174,7 +174,7 @@ namespace Audio_Manipulation_2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 278);
+            this.ClientSize = new System.Drawing.Size(855, 249);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.midiOptions);
             this.Controls.Add(this.volumeSlider1);
@@ -189,6 +189,7 @@ namespace Audio_Manipulation_2
             this.Controls.Add(this.butPlay);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
