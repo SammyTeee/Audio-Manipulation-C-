@@ -48,7 +48,7 @@ namespace Audio_Manipulation_2
                 outputDevice = new WaveOutEvent();                      //WaveOutEvent best option for sending audio to soundcard 
                 outputDevice.PlaybackStopped += OnPlaybackStopped;      // to add ASIO - github.com/naudio/NAudio/blob/master/Docs/AsioPlayback.md
             }
-            if (audioFile == null)
+             if (audioFile == null)
             {
                 audioFile = new AudioFileReader(textBox1.Text);                             //audioFile = new AudioFileReader(@"c:\aphextwin.mp3");     //hardcoded directory
                 outputDevice.Init(audioFile);
@@ -228,7 +228,16 @@ namespace Audio_Manipulation_2
 
         private void volumeSlider1_VolumeChanged(object sender, EventArgs e) //Volume Slider
         {
-            outputDevice.Volume = volumeSlider1.Volume;             
+            if (outputDevice == null)
+            {
+                Console.WriteLine("You haven't loaded a file yet!!");
+            }
+            else
+            {
+                outputDevice.Volume = volumeSlider1.Volume;                     //WaveOutEvent best option for sending audio to soundcard
+            }
+
+                         
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
